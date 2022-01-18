@@ -1,17 +1,17 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-describe "post a destination route", :type => :request do
+# describe "post a destination route", :type => :request do
 
-  before do
-    post '/destinations', params: { :name => 'statue', :city => 'Paris', :country => 'England' }
+#   before do
+#     post '/destinations', params: { :name => 'statue', :city => 'Paris', :country => 'England' }
     # id = JSON.parse(response.body)['id']
     # put '/destinations/#{id}', params: { :name => 'fountain', :city => 'London', :country => 'France' }
 
-  end
+  # end
   
-  it 'returns id' do
-    expect(JSON.parse(response.body)['id']).to eq(1)
-  end
+  # it 'returns id' do
+  #   expect(JSON.parse(response.body)['id']).to eq(1)
+  # end
 
   # it 'returns the destination name' do
   #   expect(JSON.parse(response.body)['city']).to eq('London')
@@ -28,7 +28,7 @@ describe "post a destination route", :type => :request do
   # it 'returns a created status' do
   #   expect(response).to have_http_status(:created)
   # end
-end
+# end
 
 
 # {

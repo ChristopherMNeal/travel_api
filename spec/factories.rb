@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory(:destination) do
+  factory(:review) do
     content {Faker::Fantasy::Tolkien.poem}
     author {Faker::Fantasy::Tolkien.character}
     rating {rand(1..5)}
