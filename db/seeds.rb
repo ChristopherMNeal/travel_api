@@ -9,17 +9,20 @@ class Seed
 
   def self.begin
     seed = Seed.new
-    seed.generate_destinations
+    seed.generate_reviews
   end
 
-  def generate_destinations
+  def generate_reviews
     20.times do |i|
-      destination = Destination.create!(
-        name: Faker::Fantasy::Tolkien.location,
+      review = Review.create!(
+        content: Faker::Fantasy::Tolkien.poem,
+        author: Faker::Fantasy::Tolkien.character,
+        rating: rand(1..5),
+        landmark: Faker::Fantasy::Tolkien.location,
         city: Faker::Address.city,
         country: Faker::Address.country
       )
-      puts "Destination #{i}: Location is #{destination.name}, city is #{destination.city}, and country is #{destination.country}."
+      puts "Review #{i}: Location is #{review.landmark}, city is #{review.city}, and country is #{review.country}. Review author is #{review.author}, rating is #{review.rating}, content is #{review.content}"
     end
   end
 end

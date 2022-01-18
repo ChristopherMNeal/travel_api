@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "post a destination route", :type => :request do
+describe "post a review route", :type => :request do
 
   before do
-    post '/destinations', params: { :name => 'statue', :city => 'Paris', :country => 'England' }
+    post '/reviews', params: { :name => 'statue', :city => 'Paris', :country => 'England' }
   end
 
-  it 'returns the destination name' do
+  it 'returns the review name' do
     expect(JSON.parse(response.body)['name']).to eq('statue')
   end
 
