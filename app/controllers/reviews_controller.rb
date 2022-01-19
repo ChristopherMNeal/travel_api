@@ -1,17 +1,21 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
+    ratings = params[:ratings]
+    most = params[:most_reviews]
     city = params[:city]
     country = params[:country]
     if city
       @reviews = Review.city_search(city)
     elsif country
       @reviews = Review.country_search(country)
+    elsif ratings
+      @reviews = Review.best_rating
+    elsif most
+      @reviews = Review.most_reviews
     end
     json_response(@reviews)
   end
-
-  # http://localhost:3000/reviews?country=texas
 
   def show
     @review = Review.find(params[:id])
