@@ -10,15 +10,29 @@ class Review < ApplicationRecord
   before_save(:titleize_city)
   scope :city_search, -> (city_parameter) { where(city: city_parameter) }
   scope :best_rating, -> {where(rating: 5)}
-  # scope :country_search, -> (country_parameter) { where(country: country_parameter) }
-  scope :country_search, -> (country_parameter) {where("country like ?", "%#{country_parameter}%")}  
-  scope :most_reviews { "select mode() within group order by landmark from reviews"}
+  scope :country_search, -> (country_parameter) {where("country ilike ?", "%#{country_parameter}%")}  
 
   scope :ten_most_recent, -> { order(created_at: :desc).limit(10)}
 
+  def self.most_reviews
+    arr = []
+    Review.all.each do |review|
+      arr.push(review["landmark"])
+    end
+    most_reviews_landmark = arr.max_by { |i| arr.count(i) }
+    where(landmark: most_reviews_landmark)
+  end
 
-  private
-    def titleize_product
-      self.name = self.name.titleize
+  private  
+    def titleize_country
+      self.country = self.country.titleize
+    end
+    
+    def titleize_landmark
+      self.landmark = self.landmark.titleize
+    end
+    
+    def titleize_city
+      self.city = self.city.titleize
     end
 end
