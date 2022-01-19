@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Review.destroy_all
 class Seed
 
   def self.begin
@@ -20,9 +21,10 @@ class Seed
         rating: rand(1..5),
         landmark: Faker::Fantasy::Tolkien.location,
         city: Faker::Address.city,
-        country: Faker::Address.country
+        country: Faker::Address.country,
+        user_name: Faker::DcComics.heroine
       )
-      puts "Review #{i}: Location is #{review.landmark}, city is #{review.city}, and country is #{review.country}. Review author is #{review.author}, rating is #{review.rating}, content is #{review.content}"
+      puts "Review #{i}: Location is #{review.landmark}, city is #{review.city}, and country is #{review.country}. Review author is #{review.author}, rating is #{review.rating}, content is #{review.content}, username is #{review.user_name}"
     end
   end
 end

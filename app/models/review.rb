@@ -11,9 +11,7 @@ class Review < ApplicationRecord
   scope :city_search, -> (city_parameter) { where(city: city_parameter) }
   scope :best_rating, -> {where(rating: 5)}
   scope :country_search, -> (country_parameter) {where("country ilike ?", "%#{country_parameter}%")}  
-
-  scope :ten_most_recent, -> { order(created_at: :desc).limit(10)}
-
+  
   def self.most_reviews
     arr = []
     Review.all.each do |review|
@@ -21,6 +19,17 @@ class Review < ApplicationRecord
     end
     most_reviews_landmark = arr.max_by { |i| arr.count(i) }
     where(landmark: most_reviews_landmark)
+  end
+
+  def self.random
+    arr = []
+    Review.all.each do |review|
+      arr.push(review["landmark"])
+    end
+    set = arr.to_set
+    random_num = rand(set.length)
+    landmark_random = set.to_a[random_num]
+    where(landmark: landmark_random)
   end
 
   private  
