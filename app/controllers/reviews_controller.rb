@@ -1,7 +1,4 @@
 class ReviewsController < ApplicationController
-  TOKEN = "secret"
-  before_action :authenticate, except: [ :index ]
-
   def index
     @reviews = Review.all
     ratings = params[:ratings]
@@ -64,13 +61,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.permit(:content, :author, :rating, :landmark, :city, :country, :user_name)
   end
-
-  private
-    def authenticate
-      authenticate_or_request_with_http_token do |token, options|
-        # Compare the tokens in a time-constant manner, to mitigate
-        # timing attacks.
-        ActiveSupport::SecurityUtils.secure_compare(token, TOKEN)
-      end
-    end
 end
