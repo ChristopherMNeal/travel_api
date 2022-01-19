@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    # @reviews = Review.all
+    @reviews = Review.paginate(page: params[:page], per_page: 5)
     ratings = params[:ratings]
     most = params[:most_reviews]
     city = params[:city]
