@@ -1,6 +1,8 @@
 # README
+auth_token = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDI3MTg5NzN9.bpnXBYjWPQhwVsWR2ePfIuCMf3POCHqhe1MaRVOEL5U
 
 This README would normally document whatever steps are necessary to get the
+
 application up and running.
 
 Things you may want to cover:
