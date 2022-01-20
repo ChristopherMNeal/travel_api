@@ -1,26 +1,43 @@
 # README
 auth_token = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDI3MTg5NzN9.bpnXBYjWPQhwVsWR2ePfIuCMf3POCHqhe1MaRVOEL5U
 
-This README would normally document whatever steps are necessary to get the
 
-application up and running.
+##Intro 
 
-Things you may want to cover:
+about api info goes here
 
-* Ruby version
 
-* System dependencies
+##Endpoints
 
-* Configuration
+|Usage | METHOD       | URL       | Params |
+| :--------|:------------:| ---------:| ------:|
+|See All Quotes | GET    | `localhost:3000/quotes` |
+|See A Specific Quote | GET    | `localhost:3000/quotes/:id` |
+|Search By Quote Author | GET    | `localhost:3000/quotes?author=` | _author_ |
+|See A Random Quote | GET    | `localhost:3000/quotes/random` |
+|Create A Quote | POST    | `localhost:3000/quotes` | _author, content_ |
+|Update A Quote | PUT    | `localhost:3000/quotes/:id` | _author, content_ |
+|Delete A Quote | DELETE    |`localhost:3000/quotes/:id`|   
 
-* Database creation
 
-* Database initialization
+##Status Codes
 
-* How to run the test suite
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 404 | `NOT FOUND` |
+| 500 | `INTERNAL SERVER ERROR` |
 
-* Services (job queues, cache servers, search engines, etc.)
+## Responses
 
-* Deployment instructions
+Many API endpoints return the JSON representation of the resources created or edited. However, if an invalid request is submitted, or some other error occurs, Gophish returns a JSON response in the following format:
 
-* ...
+```javascript
+{
+  "message" : string,
+  "success" : bool,
+  "data"    : string
+}
+```

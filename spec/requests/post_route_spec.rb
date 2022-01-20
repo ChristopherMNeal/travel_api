@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 describe "post a review route", :type => :request do
-
+  
   before do
-    post '/reviews', params: { :author => "Emily", :content => "Mamma mia", :rating => 5, :landmark => 'statue', :city => 'Paris', :country => 'England' }
+    post '/api/v1/reviews', params: { :author => "Emily", :content => "Mamma mia", :rating => 5, :landmark => 'statue', :city => 'Paris', :country => 'England', :user_name => 'Morgan' }, headers: { "Authorization" =>  'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDI3MTg5NzN9.bpnXBYjWPQhwVsWR2ePfIuCMf3POCHqhe1MaRVOEL5U' }
+    
+    # { 'HTTP_AUTHORIZATION'=>'Token token="eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDI3MTg5NzN9.bpnXBYjWPQhwVsWR2ePfIuCMf3POCHqhe1MaRVOEL5U"' }
   end
   it 'returns the review author' do
     expect(JSON.parse(response.body)['author']).to eq('Emily')

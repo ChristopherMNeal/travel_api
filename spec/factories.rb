@@ -6,5 +6,6 @@ FactoryBot.define do
     landmark {Faker::Fantasy::Tolkien.location}
     city {Faker::Address.city}
     country {Faker::Address.country}
+    user_name {'Morgan'}
   end
 end
